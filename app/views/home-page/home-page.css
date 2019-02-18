@@ -1,0 +1,21 @@
+.bottom-nav {
+    margin: 0;
+    background-color: #ffffff;
+    border-top-color: #ececec;
+    border-top-width: 1;
+    text-align: center;
+}
+
+.bottom-nav-btn {
+    padding-top: 8;
+    padding-bottom: 8;
+    color: #888888;
+}
+
+.btn-active {
+    color: #223e92;
+}
+
+.bottom-nav-text {
+    font-size: 12;
+}

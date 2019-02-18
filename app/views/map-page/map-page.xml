@@ -1,0 +1,5 @@
+<Page>
+    <Page.actionBar>
+        <ActionBar title="Map" />
+    </Page.actionBar>
+</Page>

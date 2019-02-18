@@ -1,0 +1,18 @@
+<Page actionBarHidden="true">
+    <GridLayout rows="*, auto" columns="*">
+
+        <Frame id="main-display" row="0" defaultPage="views/schedule-page/schedule-page"/>
+
+        <GridLayout id="navbar" class="bottom-nav" row="1" columns="*,*,*">
+            <StackLayout id="map-page" col="0" tap="switchTabs" class="bottom-nav-btn">
+                    <Label text="Map" textWrap="true" class="bottom-nav-text" />
+            </StackLayout>
+            <StackLayout id="schedule-page" col="1" tap="switchTabs" class="bottom-nav-btn btn-active">
+                    <Label text="Schedule" textWrap="true" class="bottom-nav-text" />
+            </StackLayout>
+            <StackLayout id="information-page" col="2" tap="switchTabs" class="bottom-nav-btn">
+                    <Label text="Information" textWrap="true" class="bottom-nav-text" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,28 @@
+<Page loaded="pageLoaded" xmlns:Card="nativescript-cardview">
+
+    <Page.actionBar>
+        <ActionBar title="Schedule" />
+    </Page.actionBar>
+
+    <ScrollView>
+        <StackLayout>
+            <Repeater items="{{ data }}">
+                <Repeater.itemTemplate>
+                    <StackLayout>
+                        <Label class="h1" text="{{ date }}" />
+                        <Repeater items="{{ schedule }}">
+                            <Repeater.itemTemplate>
+                                <Card:CardView class="card" elevation="10" radius="10">
+                                    <StackLayout class="card-layout">
+                                        <Label class="h3" text="{{ heading }}" />
+                                        <Label textWrap="true" text="{{ content }}" />
+                                    </StackLayout>
+                                </Card:CardView>
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </StackLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+    </ScrollView>
+</Page>
