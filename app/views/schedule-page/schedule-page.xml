@@ -1,28 +1,32 @@
-<Page loaded="pageLoaded" xmlns:Card="nativescript-cardview">
+<Page loaded="pageLoaded">
 
     <Page.actionBar>
-        <ActionBar title="Schedule" />
+        <ActionBar title="Schedule">
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" />
+        </ActionBar>
     </Page.actionBar>
 
-    <ScrollView>
-        <StackLayout>
-            <Repeater items="{{ data }}">
-                <Repeater.itemTemplate>
-                    <StackLayout>
-                        <Label class="h1" text="{{ date }}" />
-                        <Repeater items="{{ schedule }}">
-                            <Repeater.itemTemplate>
-                                <Card:CardView class="card" elevation="10" radius="10">
-                                    <StackLayout class="card-layout">
-                                        <Label class="h3" text="{{ heading }}" />
-                                        <Label textWrap="true" text="{{ content }}" />
-                                    </StackLayout>
-                                </Card:CardView>
-                            </Repeater.itemTemplate>
-                        </Repeater>
-                    </StackLayout>
-                </Repeater.itemTemplate>
-            </Repeater>
-        </StackLayout>
+    <ScrollView class="wall">
+        <Repeater items="{{ data }}">
+            <Repeater.itemTemplate>
+                <StackLayout class="day-schedule">
+                    <Label class="day-schedule-text" text="{{ date }}" />
+                    <Repeater items="{{ schedule }}">
+                        <Repeater.itemTemplate>
+                            <GridLayout class="row-card" columns="auto, *">
+                                <GridLayout class="row-card-time" col="0" rows="*,*">
+                                    <Label row="0" text="1:00pm" />
+                                    <Label row="1" text="2:00pm" />
+                                </GridLayout>
+                                <StackLayout class="row-card-event" col="1">>
+                                    <Label class="row-card-title" text="{{ heading }}" />
+                                    <Label class="row-card-description" textWrap="true" text="{{ content }}" />
+                                </StackLayout>
+                            </GridLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+            </Repeater.itemTemplate>
+        </Repeater>
     </ScrollView>
 </Page>

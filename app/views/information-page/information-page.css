@@ -1,0 +1,29 @@
+.title {
+    margin: 20 0 5 20;
+    text-transform: uppercase;
+}
+
+.row-card {
+    margin: 0;
+    padding: 10;
+    background-color: #ffffff;
+    border-color: #d9d9d9;
+    border-width: 1;
+}
+
+.description {
+    margin-left: 10;
+}
+
+.category {
+    font-size: 16;
+    color: #000000;
+}
+
+.name {
+    color: #999999;
+}
+
+.name-invis {
+    visibility: collapse;
+}

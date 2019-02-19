@@ -1,0 +1,32 @@
+.caucus {
+    padding: 15;
+}
+
+.caucusNumber {
+    font-size: 22;
+    color: #000000;
+}
+
+.caucusDate {
+    font-size: 16;
+}
+
+.row-card {
+    margin-top: 10;
+    padding: 5 10;
+    background-color: #ffffff;
+    border-color: #ececec;
+    border-width: 2;
+    border-radius: 5;
+}
+
+.row-card-title {
+    font-size: 16;
+    color: #000000;
+}
+
+.row-card-location {
+    margin-top: 5;
+    font-size: 12;
+    color: #999999;
+}

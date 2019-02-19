@@ -1,0 +1,16 @@
+<Page loaded="pageLoaded">
+    <ScrollView class="wall">
+        <StackLayout class="caucus">
+            <Label class="caucusNumber" text="{{ numCaucus }}" />
+            <Label class="caucusDate" text="{{ date }}" />
+            <Repeater items="{{ data }}"> 
+                <Repeater.itemTemplate>
+                    <StackLayout class="row-card">
+                        <Label class="row-card-title" text="{{ title }}" />
+                        <Label class="row-card-location" text="{{ location }}" />
+                    </StackLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+    </ScrollView>
+</Page>

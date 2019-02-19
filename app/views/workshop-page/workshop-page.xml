@@ -1,0 +1,18 @@
+<Page loaded="pageLoaded">
+    <ScrollView class="wall">
+        <StackLayout class="workshop">
+            <Label class="workshopNumber" text="{{ numWorkshop }}" />
+            <Label class="workshopDate" text="{{ date }}" />
+            <Repeater items="{{ data }}"> 
+                <Repeater.itemTemplate>
+                    <StackLayout class="row-card">
+                        <Label class="row-card-title" text="{{ title }}" />
+                        <Label class="row-card-author" text="{{ author }}" />
+                        <Label class="row-card-description" textWrap="true" text="{{ description }}" />
+                        <Label class="row-card-location" text="{{ location }}" />
+                    </StackLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+    </ScrollView>
+</Page>

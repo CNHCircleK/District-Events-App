@@ -1,5 +1,25 @@
-<Page>
+<Page loaded="pageLoaded">
     <Page.actionBar>
         <ActionBar title="Information" />
     </Page.actionBar>
+
+    <ScrollView class="wall">
+        <Repeater items="{{ data }}">
+            <Repeater.itemTemplate>
+                <StackLayout>
+                    <Label class="title" text="{{ infoTitle }}" />
+                    <Repeater items="{{ items }}">
+                        <Repeater.itemTemplate>
+                            <GridLayout class="row-card" columns="*,*">
+                                <StackLayout class="description" col="0">
+                                    <Label class="category" text="{{ infoCategory }}" />
+                                    <Label class="name" text="{{ infoName }}"/>
+                                </StackLayout>
+                            </GridLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+            </Repeater.itemTemplate>
+        </Repeater>
+    </ScrollView>
 </Page>
