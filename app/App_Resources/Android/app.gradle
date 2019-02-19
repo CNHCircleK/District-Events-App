@@ -11,10 +11,14 @@
 
 android {  
   defaultConfig {  
+    applicationId = "org.nativescript.DCON2019"
     generatedDensities = []
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
+  }
+  project.ext {
+    googlePlayServicesVersion = "+"
   }  
 } 
 
