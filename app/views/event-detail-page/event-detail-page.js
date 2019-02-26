@@ -9,4 +9,14 @@ function pageLoaded(args)
     page.bindingContext = eventDetailViewModel;
 }
 
+function onNavigatedTo(args)
+{
+    var context = args.context;
+    eventDetailViewModel = new EventDetailViewModel(context.id);
+
+    var page = args.object;
+    page.bindingContext = eventDetailViewModel;
+}
+
 exports.pageLoaded = pageLoaded;
+exports.onNavigatedTo = onNavigatedTo;

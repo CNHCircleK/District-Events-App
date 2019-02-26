@@ -2,7 +2,7 @@
     padding: 10;
 }
 
-.day-schedule-text {
+.day-schedule-date {
     font-size: 18;
 }
 
@@ -21,14 +21,14 @@
 }
 
 .row-card-event {
-    margin-left: 40;
     text-align: left;
+    color: #000000;
 }
 
 .row-card-title {
     font-size: 16;
 }
 
-.row-card-description {
-    font-size: 14;
+.row-card-location {
+    font-size: 12;
 }

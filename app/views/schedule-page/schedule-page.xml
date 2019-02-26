@@ -10,17 +10,17 @@
         <Repeater items="{{ data }}">
             <Repeater.itemTemplate>
                 <StackLayout class="day-schedule">
-                    <Label class="day-schedule-text" text="{{ date }}" />
-                    <Repeater items="{{ schedule }}">
+                    <Label class="day-schedule-date" text="{{ date }}" />
+                    <Repeater items="{{ events }}">
                         <Repeater.itemTemplate>
-                            <GridLayout class="row-card" columns="auto, *">
+                            <GridLayout class="row-card" columns="2*, 5*" id="{{ id }}" block="{{ block }}" tap="onTap">
                                 <GridLayout class="row-card-time" col="0" rows="*,*">
-                                    <Label row="0" text="1:00pm" />
-                                    <Label row="1" text="2:00pm" />
+                                    <Label row="0" text="{{ sTime }}" />
+                                    <Label row="1" text="{{ eTime }}" />
                                 </GridLayout>
                                 <StackLayout class="row-card-event" col="1">>
-                                    <Label class="row-card-title" text="{{ heading }}" />
-                                    <Label class="row-card-description" textWrap="true" text="{{ content }}" />
+                                    <Label class="row-card-title" text="{{ title }}" />
+                                    <Label class="row-card-location" textWrap="true" text="{{ location }}" />
                                 </StackLayout>
                             </GridLayout>
                         </Repeater.itemTemplate>

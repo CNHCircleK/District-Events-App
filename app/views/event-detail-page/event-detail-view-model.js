@@ -1,11 +1,10 @@
 const observableModule = require("data/observable");
 const ObservableArray = require("data/observable-array").ObservableArray;
 
-var viewModel;
 
-function EventDetailViewModel()
+function EventDetailViewModel(id)
 {
-    viewModel = observableModule.fromObject({
+    var viewModel = observableModule.fromObject({
         eventName: "General Session 1",
         date: "Friday, 3:00p--12:00mn",
         location: "Exhibit Hall A & B",
@@ -30,6 +29,9 @@ function EventDetailViewModel()
         ])
     });
 
+    if(id === undefined)
+        return viewModel;
+    
     return viewModel;
 }
 

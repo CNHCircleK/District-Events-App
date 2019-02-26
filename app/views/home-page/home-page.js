@@ -18,9 +18,7 @@ function switchTabs(args)
 
     var navigationEntry = {
         moduleName: "views/" + tappedTab.id + "/" + tappedTab.id,
-        transition: {
-            name:  "slideTop"
-        }
+        transition: { name:  "slideTop" }
     };
 
     frameModule.getFrameById("main-display").navigate(navigationEntry);

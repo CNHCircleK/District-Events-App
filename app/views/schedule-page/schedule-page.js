@@ -9,4 +9,24 @@ function pageLoaded(args)
     page.bindingContext = scheduleViewModel;
 }
 
+function onTap(args)
+{
+    var eventButton = args.object;
+    var eventId = eventButton.id;
+    var eventBlock = eventButton.block;
+
+    var navigateToPage = "event-detail-page";
+    if(eventBlock)
+        navigateToPage = "block-detail-page";
+
+    var navigationEntry = {
+        moduleName: "views/" + navigateToPage + "/" + navigateToPage,
+        context: { id: eventId },
+        transition: { name:  "slideTop" }
+    };
+
+    frameModule.getFrameById("main-display").navigate(navigationEntry);
+}
+
 exports.pageLoaded = pageLoaded;
+exports.onTap = onTap;
