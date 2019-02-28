@@ -1,22 +1,25 @@
 var frameModule = require("tns-core-modules/ui/frame");
 var ScheduleViewModel = require("./schedule-view-model");
 
-var scheduleViewModel = new ScheduleViewModel();
 
 function pageLoaded(args)
 {
+    var scheduleViewModel = new ScheduleViewModel();
+
     var page = args.object;
     page.bindingContext = scheduleViewModel;
+
+    scheduleViewModel.initialize();
 }
 
 function onTap(args)
 {
     var eventButton = args.object;
     var eventId = eventButton.id;
-    var eventBlock = eventButton.block;
+    var isEventBlock = eventButton.block;
 
     var navigateToPage = "event-detail-page";
-    if(eventBlock)
+    if(isEventBlock)
         navigateToPage = "block-detail-page";
 
     var navigationEntry = {

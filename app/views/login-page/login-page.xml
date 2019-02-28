@@ -1,0 +1,8 @@
+<Page loaded="pageLoaded" actionBarHidden="false">
+    <GridLayout>
+        <StackLayout>
+            <TextField class="passwordField" hint="Enter the password!" />
+            <Button class="loginButton" text="Go!" tap="onTap">
+        </StackLayout>
+    </GridLayout>
+</Page>

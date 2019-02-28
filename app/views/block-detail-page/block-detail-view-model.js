@@ -1,30 +1,40 @@
 const observableModule = require("data/observable");
 const ObservableArray = require("data/observable-array").ObservableArray;
+const firebase = require("nativescript-plugin-firebase/app");
 
-var viewModel;
 
-function WorkshopViewModel()
+function BlockDetailViewModel(eventId)
 {
-    viewModel = observableModule.fromObject({
-        numWorkshop: "Workshop 1",
+    var viewModel = observableModule.fromObject({
+        title: "",
         date: "Friday, 3:00p--12:00mn",
-        data: new ObservableArray([
-            { 
-                title: "Dog Toy Making",
-                author: "Winston Chu",
-                description: "Demonstration of a dog toy making tabletop service project.",
-                location: "Ballroom A" 
-            },
-            { 
-                title: "Graphic Design",
-                author: "Ryan Hoang",
-                description: "Learn the basic how-tos of the district's graphic design standards.",
-                location: "MR 2 & 3" 
-            }
-        ])
+        data: new ObservableArray(),
+        id: eventId,
+        initialize: function() {
+            setBlocks(this);
+        }
     });
 
     return viewModel;
 }
 
-module.exports = WorkshopViewModel;
+function setBlocks(viewModel)
+{
+    var docDCON = firebase.firestore().collection("events").doc("DCON");
+    var colActivities = docDCON.collection("activities");
+    var docBlockEvent = colActivities.doc(viewModel.id);
+    var colBlocks = docBlockEvent.collection("blocks");
+
+    docBlockEvent.get().then(doc => {
+        console.log(doc.exists);
+        viewModel.title = doc.data().title;
+    });
+
+    colBlocks.get().then(query => {
+        query.forEach(doc => {
+            viewModel.data.push(doc.data());
+        });
+    });
+}
+
+module.exports = BlockDetailViewModel;

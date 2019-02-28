@@ -1,12 +1,18 @@
 var frameModule = require("tns-core-modules/ui/frame");
-var WorkshopViewModel = require("./workshop-view-model");
+var BlockDetailViewModel = require("./block-detail-view-model");
 
-var workshopViewModel = new WorkshopViewModel();
+var blockDetailViewModel;
 
-function pageLoaded(args)
+function onNavigatedTo(args)
 {
+    var context = args.context;
+    var eventId = context.id;
+    blockDetailViewModel = new BlockDetailViewModel(eventId);
+
     var page = args.object;
-    page.bindingContext = workshopViewModel;
+    page.bindingContext = blockDetailViewModel;
+
+    blockDetailViewModel.initialize();
 }
 
-exports.pageLoaded = pageLoaded;
+exports.onNavigatedTo = onNavigatedTo;

@@ -1,13 +1,13 @@
-.workshop {
+.block {
     padding: 15;
 }
 
-.workshopNumber {
+.blockTitle {
     font-size: 22;
     color: #000000;
 }
 
-.workshopDate {
+.blockDate {
     font-size: 16;
 }
 
@@ -40,4 +40,8 @@
     margin-top: 5;
     font-size: 12;
     color: #000000;
+}
+
+[isWorkshop="false"] {
+    display: none;
 }

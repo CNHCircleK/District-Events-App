@@ -1,4 +1,4 @@
-<Page loaded="pageLoaded" navigatedTo="onNavigatedTo">
+<Page navigatedTo="onNavigatedTo">
     <ScrollView class="wall">
         <StackLayout class="event-detail">
             <Label class="event-name" text="{{ eventName }}" />

@@ -5,22 +5,31 @@ const firebase = require("nativescript-plugin-firebase/app");
 
 function ScheduleViewModel()
 {
-    var viewModel = observableModule.fromObject({ data: new getSchedule() });
+    var viewModel = observableModule.fromObject({ 
+        data: new ObservableArray(),
+        initialize: function() {
+            setSchedule(this);
+        } 
+    });
     return viewModel;
 }
 
-function getSchedule()
+function setSchedule(viewModel)
 {
     var docDCON = firebase.firestore().collection("events").doc("DCON");
-    var actDCON = docDCON.collection("activities");
+    var colActivities = docDCON.collection("activities");
 
-    var firstDayCol = actDCON.where("date", "==", "March 22, 2019").orderBy("startTime", "asc");
-    var secondDayCol = actDCON.where("date", "==", "March 23, 2019").orderBy("startTime", "asc");
-    var thirdDayCol = actDCON.where("date", "==", "March 24, 2019").orderBy("startTime", "asc");
+    var firstDayCol = colActivities.where("date", "==", "March 22, 2019").orderBy("startTime", "asc");
+    var secondDayCol = colActivities.where("date", "==", "March 23, 2019").orderBy("startTime", "asc");
+    var thirdDayCol = colActivities.where("date", "==", "March 24, 2019").orderBy("startTime", "asc");
 
     var firstDay = new ObservableArray();
     var secondDay = new ObservableArray();
     var thirdDay = new ObservableArray();
+
+    viewModel.data.push({ date: "March 22, 2019", events: firstDay });
+    viewModel.data.push({ date: "March 23, 2019", events: secondDay });
+    viewModel.data.push({ date: "March 24, 2019", events: thirdDay });
 
     firstDayCol.get().then(query => {
         query.forEach(doc => {
@@ -39,13 +48,6 @@ function getSchedule()
             thirdDay.push(doc.data());
         });
     });  
-
-    var schedule = new ObservableArray();
-    schedule.push({ date: "March 22, 2019", events: firstDay });
-    schedule.push({ date: "March 23, 2019", events: secondDay });
-    schedule.push({ date: "March 24, 2019", events: thirdDay });
-
-    return schedule;
 }
 
 module.exports = ScheduleViewModel;
