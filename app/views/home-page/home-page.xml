@@ -1,7 +1,7 @@
 <Page actionBarHidden="true">
     <GridLayout rows="*, auto" columns="*">
 
-        <Frame id="main-display" row="0" defaultPage="views/schedule-page/schedule-page"/>
+        <Frame id="main-display" row="0" defaultPage="views/schedule-page/schedule-page"/>    
 
         <GridLayout id="navbar" class="bottom-nav" row="1" columns="*,*,*">
             <StackLayout id="map-page" col="0" tap="switchTabs" class="bottom-nav-btn">

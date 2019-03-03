@@ -1,9 +1,6 @@
-<Page loaded="pageLoaded">
-
+<Page loaded="pageLoaded" navigatedTo="onNavigatedTo">
     <Page.actionBar>
-        <ActionBar title="Schedule">
-            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" />
-        </ActionBar>
+        <ActionBar title="Schedule" />
     </Page.actionBar>
 
     <ScrollView class="wall">

@@ -10,29 +10,29 @@ function InformationViewModel()
             {
                 infoTitle: "Welcomes",
                 items: new ObservableArray([
-                    { infoCategory: "Manuel Santiago", infoName: "District Governor" },
-                    { infoCategory: "Jennifer Hoang", infoName: "DCON Chair" },
+                    { infoCategory: "Manuel Santiago", infoName: "District Governor", hasName: true },
+                    { infoCategory: "Jennifer Hoang", infoName: "DCON Chair", hasName: true },
                 ])
             },
             {
                 infoTitle: "General",
                 items: new ObservableArray([
-                    { infoCategory: "Code of Conduct", infoName: "" },
-                    { infoCategory: "Dress Codes", infoName: "" },
+                    { infoCategory: "Code of Conduct", hasName: false },
+                    { infoCategory: "Dress Codes", hasName: false },
                 ])
             },
             {
                 infoTitle: "CNH",
                 items: new ObservableArray([
-                    { infoCategory: "District Board", infoName: "" },
-                    { infoCategory: "DCON Committee", infoName: "" },
+                    { infoCategory: "District Board", hasName: false },
+                    { infoCategory: "DCON Committee", hasName: false },
                 ])
             },
             {
                 infoTitle: "Elections",
                 items: new ObservableArray([
-                    { infoCategory: "Candidate Literature", infoName: "" },
-                    { infoCategory: "Caucus Rules", infoName: "" },
+                    { infoCategory: "Candidate Literature", hasName: false },
+                    { infoCategory: "Caucus Rules", hasName: false },
                 ])
             },
         ])

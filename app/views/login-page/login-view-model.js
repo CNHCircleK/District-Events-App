@@ -5,16 +5,15 @@ const firebase = require("nativescript-plugin-firebase/app");
 function LoginViewModel()
 {
     const viewModel = observableModule.fromObject({
-        password: "",
-        update: function() {
-            updateViewModel(this);
+        initialize: function() { 
+            initialize(this); 
         }
     });
 
     return viewModel;
 }
 
-function updateViewModel(viewModel)
+function initialize(viewModel)
 {
 
 }

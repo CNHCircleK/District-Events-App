@@ -13,7 +13,7 @@
                             <GridLayout class="row-card" columns="*,*">
                                 <StackLayout class="description" col="0">
                                     <Label class="category" text="{{ infoCategory }}" />
-                                    <Label class="name" text="{{ infoName }}"/>
+                                    <Label class="name" text="{{ infoName }}" visibility="{{ hasName ? 'visible' : 'collapsed' }}" />
                                 </StackLayout>
                             </GridLayout>
                         </Repeater.itemTemplate>

@@ -1,4 +1,10 @@
 <Page navigatedTo="onNavigatedTo">
+    <Page.actionBar>
+        <ActionBar title="Schedule">
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" />
+        </ActionBar>
+    </Page.actionBar>
+
     <ScrollView class="wall">
         <StackLayout class="event-detail">
             <Label class="event-name" text="{{ eventName }}" />

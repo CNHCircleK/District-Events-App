@@ -1,7 +1,12 @@
-.passwordField {
+.fields {
+    vertical-align: middle;
+}
 
+.passwordField {
+    margin: 0 40;
+    text-align: center;
 }
 
 .loginButton {
-
+    margin: 0 60;
 }

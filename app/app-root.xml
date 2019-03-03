@@ -1,1 +1,2 @@
-<Frame defaultPage="views/home-page/home-page"></Frame>
+<!-- <Frame defaultPage="views/home-page/home-page"></Frame> -->
+<Frame defaultPage="views/loading-page/loading-page"></Frame>

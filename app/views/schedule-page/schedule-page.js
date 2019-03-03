@@ -1,28 +1,41 @@
-var frameModule = require("tns-core-modules/ui/frame");
-var ScheduleViewModel = require("./schedule-view-model");
+const frameModule = require("tns-core-modules/ui/frame");
+const appModule = require("tns-core-modules/application");
+const ScheduleViewModel = require("./schedule-view-model");
 
+
+let scheduleViewModel;
 
 function pageLoaded(args)
 {
-    var scheduleViewModel = new ScheduleViewModel();
+    if(!global.scheduleViewModel)
+    {
+        global.scheduleViewModel = new ScheduleViewModel();
+    }
 
-    var page = args.object;
-    page.bindingContext = scheduleViewModel;
+    const page = args.object;
+    page.bindingContext = global.scheduleViewModel;
+}
 
-    scheduleViewModel.initialize();
+function onNavigatedTo()
+{
+    if(!global.scheduleViewModel.initialized)
+    {
+        global.scheduleViewModel.initialize();
+        global.scheduleViewModel.initialized = true;
+    }
 }
 
 function onTap(args)
 {
-    var eventButton = args.object;
-    var eventId = eventButton.id;
-    var isEventBlock = eventButton.block;
+    const eventButton = args.object;
+    const eventId = eventButton.id;
+    // var isEventBlock = eventButton.block;
 
-    var navigateToPage = "event-detail-page";
-    if(isEventBlock)
-        navigateToPage = "block-detail-page";
+    const navigateToPage = "event-detail-page";
+    // if(isEventBlock)
+    //     navigateToPage = "block-detail-page";
 
-    var navigationEntry = {
+    const navigationEntry = {
         moduleName: "views/" + navigateToPage + "/" + navigateToPage,
         context: { id: eventId },
         transition: { name:  "slideTop" }
@@ -32,4 +45,5 @@ function onTap(args)
 }
 
 exports.pageLoaded = pageLoaded;
+exports.onNavigatedTo = onNavigatedTo;
 exports.onTap = onTap;

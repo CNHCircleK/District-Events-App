@@ -1,11 +1,13 @@
-var frameModule = require("tns-core-modules/ui/frame");
-var InformationViewModel = require("./information-view-model");
+const frameModule = require("tns-core-modules/ui/frame");
+const InformationViewModel = require("./information-view-model");
 
-var informationViewModel = new InformationViewModel();
+let informationViewModel;
 
 function pageLoaded(args)
 {
-    var page = args.object;
+    informationViewModel = new InformationViewModel();
+
+    const page = args.object;
     page.bindingContext = informationViewModel;
 }
 
