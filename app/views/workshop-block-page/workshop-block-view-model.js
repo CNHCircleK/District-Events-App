@@ -68,8 +68,8 @@ function setWorkshops(viewModel)
     });
 
     wsFile.readText().then(text => {
-        const wsObj = JSON.parse(text);
-        wsObj.workshops.forEach(wsObj => {
+        const blockObj = JSON.parse(text);
+        blockObj.workshops.forEach(wsObj => {
             viewModel.data.push(wsObj);
         });
     });

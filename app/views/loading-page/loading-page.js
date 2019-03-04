@@ -3,13 +3,14 @@ const fileSystemModule = require("tns-core-modules/file-system");
 const firebase = require("nativescript-plugin-firebase/app");
 
 
-const numberToLoad = 2;
+const numberToLoad = 3;
 let numberLoaded = 0;
 
 function pageLoaded(args)
 {
     loadActivities();
     loadWorkshops();
+    loadCaucuses();
 }
 
 function loadActivities()
@@ -147,6 +148,33 @@ function loadWorkshops()
         wsSixFile.writeText(wsStrArray[5]);
         wsSevenFile.writeText(wsStrArray[6]);
         wsEightFile.writeText(wsStrArray[7]);
+    }).then(() => {
+        navigateToLogin();
+    });
+}
+
+function loadCaucuses()
+{
+    const docDCON = firebase.firestore().collection("events").doc("DCON");
+    const colCaucuses = docDCON.collection("caucuses");
+
+    const documents = fileSystemModule.knownFolders.documents();
+    const folder = documents.getFolder("data");
+    const caucusFile = folder.getFile("caucuses");
+
+    colCaucuses.get().then(query => {
+        let caucusString = '{ "caucuses": [';
+
+        query.forEach(doc => {
+            caucusString += JSON.stringify(doc.data()) + ",";
+        });
+
+        caucusString = caucusString.substring(0, caucusString.length - 1);
+        caucusString += "] }";
+
+        return caucusString;
+    }).then(caucusStr => {
+        caucusFile.writeText(caucusStr);
     }).then(() => {
         navigateToLogin();
     });

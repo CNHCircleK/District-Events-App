@@ -1,0 +1,22 @@
+<Page navigatedTo="onNavigatedTo">
+    <Page.actionBar>
+        <ActionBar title="Caucus">
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" />
+        </ActionBar>
+    </Page.actionBar>
+
+    <ScrollView class="wall">
+        <StackLayout class="block">
+            <Label class="blockTitle" text="{{ title }}" />
+            <Label class="blockDate" text="{{ dateTime }}" />
+            <Repeater items="{{ data }}"> 
+                <Repeater.itemTemplate>
+                    <StackLayout class="row-card">
+                        <Label class="row-card-title" textWrap="true" text="{{ division }}" />
+                        <Label class="row-card-location" textWrap="true" text="{{ location }}" />
+                    </StackLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+    </ScrollView>
+</Page>
