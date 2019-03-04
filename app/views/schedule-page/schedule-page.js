@@ -1,9 +1,6 @@
 const frameModule = require("tns-core-modules/ui/frame");
-const appModule = require("tns-core-modules/application");
 const ScheduleViewModel = require("./schedule-view-model");
 
-
-let scheduleViewModel;
 
 function pageLoaded(args)
 {
@@ -27,19 +24,31 @@ function onNavigatedTo()
 
 function onTap(args)
 {
-    const eventButton = args.object;
-    const eventId = eventButton.id;
-    // var isEventBlock = eventButton.block;
-
-    const navigateToPage = "event-detail-page";
-    // if(isEventBlock)
-    //     navigateToPage = "block-detail-page";
+    const eventItem = args.object;
+    const eventType = eventItem.typeEvent;
 
     const navigationEntry = {
-        moduleName: "views/" + navigateToPage + "/" + navigateToPage,
-        context: { id: eventId },
+        context: { id: eventItem.id },
         transition: { name:  "slideTop" }
     };
+    
+    let pageToNavigateTo;
+    switch(eventType)
+    {
+        case "event":
+            pageToNavigateTo = "event-detail-page";
+            break;
+        case "caucus":
+            pageToNavigateTo = "caucus-block-page";
+            navigationEntry.context.caucusNumber = eventItem.caucus;
+            break;
+        case "workshop":
+            pageToNavigateTo = "workshop-block-page";
+            navigationEntry.context.workshopNumber = eventItem.workshop;
+            break;
+    }
+    
+    navigationEntry.moduleName = "views/" + pageToNavigateTo + "/" + pageToNavigateTo;
 
     frameModule.getFrameById("main-display").navigate(navigationEntry);
 }

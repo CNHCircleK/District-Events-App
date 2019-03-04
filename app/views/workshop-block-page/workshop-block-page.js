@@ -1,16 +1,18 @@
 const frameModule = require("tns-core-modules/ui/frame");
-const EventDetailViewModel = require("./event-detail-view-model");
+const WorkshopBlockViewModel = require("./workshop-block-view-model");
 
 
-let eventDetailViewModel;
+let workshopBlockViewModel;
 
 function onNavigatedTo(args)
 {
     const context = args.context;
-    eventDetailViewModel = new EventDetailViewModel(context.id);
+    workshopBlockViewModel = new WorkshopBlockViewModel(context);
 
-    const page = args.object;
-    page.bindingContext = eventDetailViewModel;
+    var page = args.object;
+    page.bindingContext = workshopBlockViewModel;
+
+    workshopBlockViewModel.initialize();
 }
 
 function goBack(args)

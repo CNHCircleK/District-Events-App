@@ -25,7 +25,7 @@ function onTap(args)
         transition: { name:  "slideTop" }
     };
 
-    if(passField.text == "Yeehaw!")
+    if(passField.text == "yeehaw!")
         frameModule.topmost().navigate(navigationEntry);
 }
 
