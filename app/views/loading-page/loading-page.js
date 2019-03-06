@@ -1,13 +1,23 @@
 const frameModule = require("tns-core-modules/ui/frame");
 const fileSystemModule = require("tns-core-modules/file-system");
+const LoadingViewModel = require("./loading-view-model");
 const firebase = require("nativescript-plugin-firebase/app");
 
 
 const numberToLoad = 3;
 let numberLoaded = 0;
 
+let loadingViewModel;
+
 function pageLoaded(args)
 {
+    loadingViewModel = new LoadingViewModel();
+
+    const page = args.object;
+    page.bindingContext = loadingViewModel;
+
+    loadingViewModel.initialize();
+
     loadActivities();
     loadWorkshops();
     loadCaucuses();
@@ -187,7 +197,7 @@ function navigateToLogin()
     if(numberLoaded >= numberToLoad)
     {
         const navigationEntry = {
-            moduleName: "views/login-page/login-page",
+            moduleName: "views/home-page/home-page",
             transition: { name: "slideTop" }
         };
         

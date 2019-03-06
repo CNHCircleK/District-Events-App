@@ -1,29 +1,27 @@
-<Page loaded="pageLoaded" navigatedTo="onNavigatedTo">
+<Page xmlns:lv="nativescript-ui-listview" loaded="pageLoaded">
     <Page.actionBar>
         <ActionBar title="Schedule" />
     </Page.actionBar>
 
-    <ScrollView class="wall">
-        <Repeater items="{{ data }}">
-            <Repeater.itemTemplate>
-                <StackLayout class="day-schedule">
-                    <Label class="day-schedule-date" text="{{ date }}" />
-                    <Repeater items="{{ events }}">
-                        <Repeater.itemTemplate>
-                            <GridLayout class="row-card" columns="2*, 5*" typeEvent="{{ type }}" id="{{ id }}" caucus="{{ caucus }}" workshop="{{ workshop }}" tap="onTap">
-                                <GridLayout class="row-card-time" col="0" rows="*,*">
-                                    <Label row="0" text="{{ sTime }}" />
-                                    <Label row="1" text="{{ eTime }}" />
-                                </GridLayout>
-                                <StackLayout class="row-card-event" col="1">>
-                                    <Label class="row-card-title" text="{{ title }}" textWrap="true" />
-                                    <Label class="row-card-location" textWrap="true" text="{{ location }}" />
-                                </StackLayout>
-                            </GridLayout>
-                        </Repeater.itemTemplate>
-                    </Repeater>
-                </StackLayout>
-            </Repeater.itemTemplate>
-        </Repeater>
-    </ScrollView>
+    <lv:RadListView class="wall" items="{{ data }}" loadOnDemandMode="Auto" loadMoreDataRequested="{{ onLoadMoreDataRequested }}">
+        <lv:RadListView.itemTemplate>
+            <StackLayout class="day-schedule">
+                <Label class="day-schedule-date" text="{{ date }}" />
+                <Repeater items="{{ events }}">
+                    <Repeater.itemTemplate>
+                        <GridLayout class="row-card" columns="2*, 5*" typeEvent="{{ type }}" id="{{ id }}" date="{{ date }}" caucus="{{ caucus }}" workshop="{{ workshop }}" touch="onTouch">
+                            <GridLayout class="row-card-time" col="0" rows="*,*">
+                                <Label row="0" text="{{ sTime }}" />
+                                <Label row="1" text="{{ eTime }}" />
+                            </GridLayout>s
+                            <StackLayout class="row-card-event" col="1">>
+                                <Label class="row-card-title" text="{{ title }}" textWrap="true" />
+                                <Label class="row-card-location" textWrap="true" text="{{ location }}" />
+                            </StackLayout>
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+        </lv:RadListView.itemTemplate>
+    </lv:RadListView>
 </Page>

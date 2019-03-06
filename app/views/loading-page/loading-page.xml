@@ -1,2 +1,7 @@
 <Page loaded="pageLoaded" actionBarHidden="true">
+    <GridLayout>
+        <StackLayout class="progressBar">
+            <Progress width="100%" value="{{ progressValue }}" minValue="{{ minValue }}" maxValue="{{ maxValue }}" />
+        </StackLayout>
+    </GridLayout>
 </Page>

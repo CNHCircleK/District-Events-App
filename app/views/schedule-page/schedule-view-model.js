@@ -9,7 +9,10 @@ function ScheduleViewModel()
         data: new ObservableArray(),
         initialize: function() {
             setSchedule(this);
-        } 
+        },
+        onLoadMoreDataRequested: function(args) {
+            loadMoreData(args);
+        }
     });
 
     return viewModel;
@@ -24,9 +27,9 @@ function setSchedule(viewModel)
     const secondDayFile = folder.getFile("second_day_schedule");
     const thirdDayFile = folder.getFile("third_day_schedule");
 
-    const firstDayEvents = new ObservableArray();
-    const secondDayEvents = new ObservableArray();
-    const thirdDayEvents = new ObservableArray();
+    let firstDayEvents = new ObservableArray();
+    let secondDayEvents = new ObservableArray();
+    let thirdDayEvents = new ObservableArray();
 
     viewModel.data.push({ date: "March 22, 2019", events: firstDayEvents });
     viewModel.data.push({ date: "March 23, 2019", events: secondDayEvents });
@@ -52,6 +55,13 @@ function setSchedule(viewModel)
             thirdDayEvents.push(eventObj);
         });
     });    
+}
+
+function loadMoreData(eventData)
+{
+    const radListView = eventData.object;
+    eventData.returnValue = false;
+    radListView.notifyLoadOnDemandFinished(true);
 }
 
 module.exports = ScheduleViewModel;

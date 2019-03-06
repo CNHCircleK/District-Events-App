@@ -10,6 +10,7 @@ function WorkshopBlockViewModel(context)
         dateTime: "",
         data: new ObservableArray(),
         id: context.id,
+        date: context.date,
         workshop: context.workshopNumber,
         initialize: function() {
             setWorkshops(this);
@@ -23,14 +24,12 @@ function setWorkshops(viewModel)
 {
     const documents = fileSystemModule.knownFolders.documents();
     const folder = documents.getFolder("data");
-
-    let dayFile = folder.getFile("second_day_schedule");
+    
     let wsFile;
     switch(viewModel.workshop)
     {
         case 1: 
             wsFile = folder.getFile("workshop_one");
-            dayFile = folder.getFile("first_day_schedule");
             break;
         case 2:
             wsFile = folder.getFile("workshop_two");
@@ -55,10 +54,16 @@ function setWorkshops(viewModel)
             break;
     }
 
+    let dayFile;
+    if(viewModel.date == "March 22, 2019")
+        dayFile = folder.getFile("first_day_schedule");
+    else if(viewModel.date == "March 23, 2019")
+        dayFile = folder.getFile("second_day_schedule");
+        
     dayFile.readText().then(text => {
         const dayObj = JSON.parse(text);
         dayObj.daySchedule.some(eventObj => {
-            if(eventObj.id == viewModel.id)
+            if(viewModel.id == eventObj.id)
             {
                 viewModel.title = eventObj.title;
                 viewModel.dateTime = eventObj.date + "; " + eventObj.sTime + "--" + eventObj.eTime;

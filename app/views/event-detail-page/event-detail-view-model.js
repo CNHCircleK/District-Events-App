@@ -1,38 +1,53 @@
 const observableModule = require("data/observable");
 const ObservableArray = require("data/observable-array").ObservableArray;
+const fileSystemModule = require("tns-core-modules/file-system");
 
 
-function EventDetailViewModel(id)
+function EventDetailViewModel(context)
 {
     var viewModel = observableModule.fromObject({
-        eventName: "General Session 1",
-        date: "Friday, 3:00p--12:00mn",
-        location: "Exhibit Hall A & B",
-        buttonText: "Seating Map",
-        eventSub_1: "Attire",
-        eventList_1: new ObservableArray([
-            { eventList_1_Item: "Casual" }
-        ]),
-        eventSub_2: "Agenda",
-        eventList_2: new ObservableArray([
-            { eventList_2_Item: "Masters of Ceremony" },
-            { eventList_2_Item: "Flag Salute" },
-            { eventList_2_Item: "National Anthem" },
-            { eventList_2_Item: "Opening Thoughts" },
-            { eventList_2_Item: "Introduction of Guests" },
-            { eventList_2_Item: "District Governor's Address" },
-            { eventList_2_Item: "DCON Chair's Address" },
-            { eventList_2_Item: "Kiwanis Governor's Address" },
-            { eventList_2_Item: "District Administrator's Address" },
-            { eventList_2_Item: "Closing Thoughts" },
-            { eventList_2_Item: "Adjournment" }
-        ])
+        title: "",
+        dateTime: "",
+        location: "",
+        id: context.id,
+        date: context.date,
+        agenda: new ObservableArray(),
+        initialize: function() {
+            setEventData(this);
+        }
     });
-
-    if(id === undefined)
-        return viewModel;
     
     return viewModel;
+}
+
+function setEventData(viewModel)
+{
+    const documents = fileSystemModule.knownFolders.documents();
+    const folder = documents.getFolder("data");
+
+    let dayFile;
+    if(viewModel.date == "March 22, 2019")
+        dayFile = folder.getFile("first_day_schedule");
+    else if(viewModel.date == "March 23, 2019")
+        dayFile = folder.getFile("second_day_schedule");
+    else if(viewModel.date == "March 24, 2019")
+        dayFile = folder.getFile("third_day_schedule");
+
+    dayFile.readText().then(text => {
+        const dayObj = JSON.parse(text);
+        dayObj.daySchedule.some(eventObj => {
+            if(viewModel.id == eventObj.id)
+            {
+                viewModel.title = eventObj.title;
+                viewModel.dateTime = eventObj.date + "; " + eventObj.sTime + "--" + eventObj.eTime;
+                viewModel.location = eventObj.location;
+                eventObj.agenda.forEach(item => {
+                    viewModel.agenda.push({ agendaItem: item });
+                });
+                return true;
+            }
+        });
+    });
 }
 
 module.exports = EventDetailViewModel;

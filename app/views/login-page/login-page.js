@@ -21,7 +21,7 @@ function onTap(args)
     const passField = rootView.getViewById("passField");
 
     const navigationEntry = {
-        moduleName: "views/home-page/home-page",
+        moduleName: "views/loading-page/loading-page",
         transition: { name:  "slideTop" }
     };
 

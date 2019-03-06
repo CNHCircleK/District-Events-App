@@ -7,10 +7,12 @@ let eventDetailViewModel;
 function onNavigatedTo(args)
 {
     const context = args.context;
-    eventDetailViewModel = new EventDetailViewModel(context.id);
+    eventDetailViewModel = new EventDetailViewModel(context);
 
     const page = args.object;
     page.bindingContext = eventDetailViewModel;
+
+    eventDetailViewModel.initialize();
 }
 
 function goBack(args)

@@ -7,24 +7,18 @@
 
     <ScrollView class="wall">
         <StackLayout class="event-detail">
-            <Label class="event-name" text="{{ eventName }}" />
+            <Label class="event-name" textWrap="true" text="{{ title }}" />
             <Label class="event-date" text="{{ date }}" />
             <Label class="event-location" text="{{ location }}" />
             <StackLayout class="event-map">
             </StackLayout>
             <StackLayout class="event-button">
-                <Label class="event-button-text" text="{{ buttonText }}" />
+                <Label class="event-button-text" text="Seating Map" />
             </StackLayout>
-            <Label class="event-sub-title" text="{{ eventSub_1 }}" />
-            <Repeater items="{{ eventList_1 }}">
+            <Label class="event-sub-title" text="Agenda" />
+            <Repeater items="{{ agenda }}">
                 <Repeater.itemTemplate>
-                    <Label class="event-sub-item" text="{{ eventList_1_Item }}" />
-                </Repeater.itemTemplate>
-            </Repeater>
-            <Label class="event-sub-title" text="{{ eventSub_2 }}" />
-            <Repeater items="{{ eventList_2 }}">
-                <Repeater.itemTemplate>
-                    <Label class="event-sub-item" text="{{ eventList_2_Item }}" />
+                    <Label class="event-sub-item" text="{{ agendaItem }}" />
                 </Repeater.itemTemplate>
             </Repeater>
         </StackLayout>

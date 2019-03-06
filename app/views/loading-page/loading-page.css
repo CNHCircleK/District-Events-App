@@ -1,0 +1,9 @@
+.progressBar {
+    vertical-align: middle;
+    margin: 0 30;
+}
+
+Progress {
+    color: #ff8095;
+    background-color: #d9d9d9;
+}

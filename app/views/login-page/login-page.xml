@@ -1,5 +1,6 @@
 <Page loaded="pageLoaded" actionBarHidden="true">
-    <GridLayout>
+    <GridLayout class="background">
+        <Image class="loginBackground" src="res://dcon_logo" stretch="aspectFill" />
         <StackLayout class="fields">
             <TextField id="passField" class="passwordField" hint="Enter the password!" />
             <Button class="loginButton" text="Go!" tap="onTap" />

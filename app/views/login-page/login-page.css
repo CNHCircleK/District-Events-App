@@ -1,3 +1,11 @@
+.background {
+    background-color: #e6f7ff;
+}
+
+.loginBackground {
+    opacity: 0.2;
+}
+
 .fields {
     vertical-align: middle;
 }
