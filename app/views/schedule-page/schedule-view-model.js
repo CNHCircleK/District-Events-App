@@ -20,6 +20,11 @@ function ScheduleViewModel()
 
 function setSchedule(viewModel)
 {
+    while(viewModel.data.length)
+    {
+        viewModel.data.pop();
+    }
+
     const documents = fileSystemModule.knownFolders.documents();
     const folder = documents.getFolder("data");
 

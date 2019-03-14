@@ -22,6 +22,13 @@ function WorkshopBlockViewModel(context)
 
 function setWorkshops(viewModel)
 {
+    viewModel.title = "";
+    viewModel.dateTime = "";
+    while(viewModel.data.length)
+    {
+        viewModel.data.pop();
+    }
+
     const documents = fileSystemModule.knownFolders.documents();
     const folder = documents.getFolder("data");
     

@@ -1,8 +1,12 @@
 const frameModule = require("tns-core-modules/ui/frame");
 const ScheduleViewModel = require("./schedule-view-model");
+const LoadDataModule = require("../../helperModules/loadData");
+const firebase = require("nativescript-plugin-firebase/app");
 
 
 let scheduleViewModel;
+let scheduleListener;
+let loadDataModule;
 
 function pageLoaded(args)
 {
@@ -12,6 +16,9 @@ function pageLoaded(args)
     page.bindingContext = scheduleViewModel;
 
     scheduleViewModel.initialize();
+
+    loadDataModule = new LoadDataModule();
+    setScheduleListener();
 }
 
 function onTouch(args)
@@ -56,9 +63,23 @@ function onTouch(args)
                 navigationEntry.moduleName = "views/" + pageToNavigateTo + "/" + pageToNavigateTo;
 
                 frameModule.getFrameById("main-display").navigate(navigationEntry);
+
+                scheduleListener();
                 break;
         }
     }
+}
+
+function setScheduleListener()
+{
+    const docDCON = firebase.firestore().collection("events").doc("DCON");
+    const colActivities = docDCON.collection("activities");
+
+    scheduleListener = colActivities.onSnapshot(() => {
+        loadDataModule.loadActivities().then(() => {
+            scheduleViewModel.initialize();
+        });
+    });      
 }
 
 exports.pageLoaded = pageLoaded;
