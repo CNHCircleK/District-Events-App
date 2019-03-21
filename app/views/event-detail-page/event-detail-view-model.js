@@ -1,11 +1,12 @@
-const observableModule = require("data/observable");
-const ObservableArray = require("data/observable-array").ObservableArray;
+const observableModule = require("tns-core-modules/data/observable");
+const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const fileSystemModule = require("tns-core-modules/file-system");
 
 
 function EventDetailViewModel(context)
 {
     var viewModel = observableModule.fromObject({
+        loadingVisible: "visible",
         title: "",
         dateTime: "",
         location: "",
@@ -39,7 +40,7 @@ function setEventData(viewModel)
             if(viewModel.id == eventObj.id)
             {
                 viewModel.title = eventObj.title;
-                viewModel.dateTime = eventObj.date + "; " + eventObj.sTime + "--" + eventObj.eTime;
+                viewModel.dateTime = eventObj.day + "; " + eventObj.sTime + "\u2014" + eventObj.eTime;
                 viewModel.location = eventObj.location;
                 eventObj.agenda.forEach(item => {
                     viewModel.agenda.push({ agendaItem: item });
@@ -47,6 +48,8 @@ function setEventData(viewModel)
                 return true;
             }
         });
+    }).then(() => {
+        viewModel.loadingVisible = "collapsed";
     });
 }
 

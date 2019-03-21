@@ -1,26 +1,27 @@
 <Page navigatedTo="onNavigatedTo">
     <Page.actionBar>
-        <ActionBar title="Schedule">
-            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" />
+        <ActionBar title="Event Detail">
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" ios.systemIcon="0" tap="goBack" />
         </ActionBar>
     </Page.actionBar>
 
     <ScrollView class="wall">
-        <StackLayout class="event-detail">
-            <Label class="event-name" textWrap="true" text="{{ title }}" />
-            <Label class="event-date" text="{{ date }}" />
-            <Label class="event-location" text="{{ location }}" />
-            <StackLayout class="event-map">
+        <GridLayout>
+            <StackLayout class="event-detail">
+                <Label class="event-name" textWrap="true" text="{{ title }}" />
+                <Label class="event-date" text="{{ dateTime }}" />
+                <Label class="event-location" text="{{ location }}" />
+                <Label class="event-sub-title" text="Agenda" />
+                <Repeater items="{{ agenda }}">
+                    <Repeater.itemTemplate>
+                        <Label class="event-sub-item" text="{{ agendaItem }}" />
+                    </Repeater.itemTemplate>
+                </Repeater>
+                <StackLayout class="event-button">
+                    <Label class="event-button-text" text="Seating Map" />
+                </StackLayout>
             </StackLayout>
-            <StackLayout class="event-button">
-                <Label class="event-button-text" text="Seating Map" />
-            </StackLayout>
-            <Label class="event-sub-title" text="Agenda" />
-            <Repeater items="{{ agenda }}">
-                <Repeater.itemTemplate>
-                    <Label class="event-sub-item" text="{{ agendaItem }}" />
-                </Repeater.itemTemplate>
-            </Repeater>
-        </StackLayout>
+            <ActivityIndicator class="loading" busy="true" visibility="{{ loadingVisible }}" />
+        </GridLayout>
     </ScrollView>
 </Page>

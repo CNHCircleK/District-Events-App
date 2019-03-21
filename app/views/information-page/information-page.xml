@@ -10,11 +10,12 @@
                     <Label class="title" text="{{ infoTitle }}" />
                     <Repeater items="{{ items }}">
                         <Repeater.itemTemplate>
-                            <GridLayout class="row-card" columns="*,*">
+                            <GridLayout class="row-card" columns="2*,*" tap="{{ onTap }}">
                                 <StackLayout class="description" col="0">
-                                    <Label class="category" text="{{ infoCategory }}" />
+                                    <Label class="category" text="{{ infoCategory }}" textWrap="true" />
                                     <Label class="name" text="{{ infoName }}" visibility="{{ hasName ? 'visible' : 'collapsed' }}" />
                                 </StackLayout>
+                                <Image class="row-card-image" horizontalAlignment="right" col="1" src="res://right_arrow" />
                             </GridLayout>
                         </Repeater.itemTemplate>
                     </Repeater>

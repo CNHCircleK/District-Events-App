@@ -27,3 +27,8 @@
 .name-invis {
     visibility: collapse;
 }
+
+.row-card-image {
+    width: 20;
+    height: 20;
+}

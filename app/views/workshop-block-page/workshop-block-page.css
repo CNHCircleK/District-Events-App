@@ -39,6 +39,14 @@
     color: #666666;
 }
 
+.row-card-readmore {
+    margin-top: 2;
+    font-size: 12;
+    color: #808080;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
 .row-card-location {
     margin-top: 8;
     font-size: 12;

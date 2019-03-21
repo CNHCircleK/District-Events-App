@@ -1,4 +1,4 @@
-const observableModule = require("data/observable");
+const observableModule = require("tns-core-modules/data/observable");
 const firebase = require("nativescript-plugin-firebase/app");
 
 

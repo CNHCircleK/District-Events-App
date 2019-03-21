@@ -41,7 +41,7 @@ function onTouch(args)
 
                 const navigationEntry = {
                     context: { id: eventItem.id, date: eventItem.date },
-                    transition: { name:  "slideTop" }
+                    transition: { name:  "slideLeft" }
                 };
 
                 let pageToNavigateTo;

@@ -1,1 +1,5 @@
-{"appId":"org.nativescript.DCON2019","minSdkVersion":null,"targetSdkVersion":null}
+{
+  "appId": "org.nativescript.DCON2019",
+  "minSdkVersion": 24,
+  "targetSdkVersion": 26
+}

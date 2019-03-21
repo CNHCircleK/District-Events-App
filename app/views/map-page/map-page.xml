@@ -1,5 +1,6 @@
-<Page>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:pdf="nativescript-pdf-view" loaded="onLoaded">
     <Page.actionBar>
         <ActionBar title="Map" />
     </Page.actionBar>
+    <pdf:PDFView src="{{ pdfUrl }}" />
 </Page>

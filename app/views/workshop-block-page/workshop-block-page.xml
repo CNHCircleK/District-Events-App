@@ -11,10 +11,11 @@
             <Label class="blockDate" text="{{ dateTime }}" />
             <Repeater items="{{ data }}"> 
                 <Repeater.itemTemplate>
-                    <StackLayout class="row-card">
+                    <StackLayout class="row-card" tap="onTap">
                         <Label class="row-card-title" textWrap="true" text="{{ title }}" />
                         <Label class="row-card-hosts" textWrap="true" text="{{ hosts }}" />
-                        <Label class="row-card-description" textWrap="true" text="{{ description }}" />
+                        <Label class="row-card-description" id="wsDesc" textWrap="false" text="{{ description }}" />
+                        <Label class="row-card-readmore" id="readMore" textWrap="true" text="Read more" visibility="visible" />
                         <Label class="row-card-location" textWrap="true" text="{{ location }}" />
                     </StackLayout>
                 </Repeater.itemTemplate>

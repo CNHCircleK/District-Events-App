@@ -43,5 +43,20 @@ function setWorkshopListener()
     });
 }
 
+function onTap(args) 
+{
+    const wsItem = args.object;
+    const wsDesc = wsItem.getViewById("wsDesc");
+    const readMore = wsItem.getViewById("readMore");
+
+    wsDesc.textWrap = !wsDesc.textWrap;
+    
+    if(wsDesc.textWrap)
+        readMore.visibility = "collapsed";
+    else
+        readMore.visibility = "visible";
+}
+
 exports.onNavigatedTo = onNavigatedTo;
 exports.goBack = goBack;
+exports.onTap = onTap;

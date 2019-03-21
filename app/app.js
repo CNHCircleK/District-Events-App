@@ -20,11 +20,11 @@ firebase.initializeApp({
 );
 
 // Disable back button across app
-if (application.android) {
-  application.android.on(application.AndroidApplication.activityBackPressedEvent, (args) => {
-    args.cancel = true;
-  });
-}
+// if (application.android) {
+//   application.android.on(application.AndroidApplication.activityBackPressedEvent, (args) => {
+//     args.cancel = true;
+//   });
+// }
 
 application.run({ moduleName: "app-root" });
 

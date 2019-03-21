@@ -1,0 +1,8 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:pdf="nativescript-pdf-view" navigatedTo="onNavigatedTo">
+    <Page.actionBar>
+        <ActionBar title="PDF">
+            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" />
+        </ActionBar>
+    </Page.actionBar>
+    <pdf:PDFView src="{{ pdfUrl }}" />
+</Page>

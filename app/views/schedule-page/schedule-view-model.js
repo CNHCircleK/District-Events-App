@@ -1,5 +1,5 @@
-const observableModule = require("data/observable");
-const ObservableArray = require("data/observable-array").ObservableArray;
+const observableModule = require("tns-core-modules/data/observable");
+const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const fileSystemModule = require("tns-core-modules/file-system");
 
 
@@ -36,9 +36,9 @@ function setSchedule(viewModel)
     let secondDayEvents = new ObservableArray();
     let thirdDayEvents = new ObservableArray();
 
-    viewModel.data.push({ date: "March 22, 2019", events: firstDayEvents });
-    viewModel.data.push({ date: "March 23, 2019", events: secondDayEvents });
-    viewModel.data.push({ date: "March 24, 2019", events: thirdDayEvents });
+    viewModel.data.push({ day: "Friday", date: "Mar 22", events: firstDayEvents });
+    viewModel.data.push({ day: "Saturday", date: "Mar 23", events: secondDayEvents });
+    viewModel.data.push({ day: "Sunday", date: "Mar 24", events: thirdDayEvents });
 
     firstDayFile.readText().then(text => {
         const dayObj = JSON.parse(text);

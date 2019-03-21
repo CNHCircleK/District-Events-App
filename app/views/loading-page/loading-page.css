@@ -1,9 +1,16 @@
 .progressBar {
-    vertical-align: middle;
+    vertical-align: bottom;
     margin: 0 30;
 }
 
 Progress {
-    color: #ff8095;
+    color: #F0DF8E;
     background-color: #d9d9d9;
+}
+
+.reminder {
+    padding-top: 20;
+    vertical-align: top;
+    text-align: center;
+    color: #ff667d;
 }

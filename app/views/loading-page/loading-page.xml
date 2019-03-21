@@ -1,7 +1,10 @@
 <Page loaded="pageLoaded" actionBarHidden="true">
-    <GridLayout>
-        <StackLayout class="progressBar">
+    <GridLayout rows="*,*">
+        <StackLayout class="progressBar" row="0">
             <Progress width="100%" value="{{ progressValue }}" minValue="{{ minValue }}" maxValue="{{ maxValue }}" />
+        </StackLayout>
+        <StackLayout class="reminder" row="1">
+            <Label text="Please remember to silence your phone during workshops, general sessions, and caucuses!" textWrap="true" />
         </StackLayout>
     </GridLayout>
 </Page>

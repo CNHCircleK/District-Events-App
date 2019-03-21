@@ -2,9 +2,20 @@
     padding: 10 10 15 10;
 }
 
-.day-schedule-date {
+.day-schedule-day_date {
+    margin-left: 10;
+}
+
+.day-schedule-day {
     font-size: 18;
     font-weight: 600;
+}
+
+.day-schedule-date {
+    margin-left: 5;
+    font-size: 18;
+    font-weight: 500;
+    color: #a6a6a6;
 }
 
 .row-card {
@@ -35,12 +46,18 @@
     font-weight: 500;
 }
 
-.row-card-location {
+.row-card-location, .row-card-info {
     font-size: 12;
 }
 
-[typeEvent="event"] {
-    background-color: #ffb3be;
+.row-card-image {
+    width: 20;
+    height: 20;
+    visibility: hidden;
+}
+
+/* [typeEvent="event"] {
+    background-color: #ffb3bf;
 }
 
 [typeEvent="caucus"] {
@@ -49,4 +66,16 @@
 
 [typeEvent="workshop"] {
     background-color: #ffe866;
+} */
+
+[typeEvent="event"] Image {
+    visibility: visible;
+}
+
+[typeEvent="caucus"] Image {
+    visibility: visible;
+}
+
+[typeEvent="workshop"] Image {
+    visibility: visible;
 }

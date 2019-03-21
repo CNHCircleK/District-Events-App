@@ -1,5 +1,6 @@
 .event-detail {
     padding: 10;
+    z-index: 0;
 }
 
 .event-name {
@@ -15,12 +16,16 @@
     font-size: 16;
 }
 
-.event-map {
-    margin: 15 0;
-    padding: 80 0;
-    background-color: #d9d9d9;
-    border-color: #000000;
-    border-width: 1 0;
+.event-sub-title {
+    margin-top: 15;
+    margin-bottom: 5;
+    font-size: 14;
+    text-transform: uppercase;
+}
+
+.event-sub-item {
+    font-size: 12;
+    color: #000000;
 }
 
 .event-button {
@@ -37,14 +42,8 @@
     color: #4d4dff;
 }
 
-.event-sub-title {
-    margin-top: 15;
-    margin-bottom: 5;
-    font-size: 14;
-    text-transform: uppercase;
-}
-
-.event-sub-item {
-    font-size: 12;
-    color: #000000;
+.loading {
+    width: 40;
+    height: 40;
+    z-index: 1;
 }

@@ -1,5 +1,5 @@
-const observableModule = require("data/observable");
-const ObservableArray = require("data/observable-array").ObservableArray;
+const observableModule = require("tns-core-modules/data/observable");
+const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const fileSystemModule = require("tns-core-modules/file-system");
 
 
@@ -44,7 +44,7 @@ function setCaucuses(viewModel)
             if(eventObj.id == viewModel.id)
             {
                 viewModel.title = eventObj.title;
-                viewModel.dateTime = eventObj.date + "; " + eventObj.sTime + "--" + eventObj.eTime;
+                viewModel.dateTime = eventObj.day + "; " + eventObj.sTime + "\u2014" + eventObj.eTime;
                 return true;
             }
         });
