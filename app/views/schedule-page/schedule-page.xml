@@ -3,31 +3,33 @@
         <ActionBar title="Schedule" />
     </Page.actionBar>
 
-    <lv:RadListView class="wall" items="{{ data }}" loadOnDemandMode="Auto" loadMoreDataRequested="{{ onLoadMoreDataRequested }}">
-        <lv:RadListView.itemTemplate>
-            <StackLayout class="day-schedule">
-                <StackLayout class="day-schedule-day_date" orientation="horizontal">
-                    <Label class="day-schedule-day" text="{{ day }}" />
-                    <Label class="day-schedule-date" text="{{ date }}" />
-                </StackLayout>
-                <Repeater items="{{ events }}">
-                    <Repeater.itemTemplate>
-                        <GridLayout class="row-card" columns="*, *, 3*, *" typeEvent="{{ type }}" id="{{ id }}" date="{{ date }}" caucus="{{ caucus }}" workshop="{{ workshop }}" touch="onTouch">
-                            <GridLayout class="row-card-time" col="0" rows="*,*">
-                                <Label row="0" text="{{ sTime }}" />
-                                <Label row="1" text="{{ eTime }}" />
+    <GridLayout rows="*">
+        <lv:RadListView class="wall schedule" items="{{ data }}" row="0" loadOnDemandMode="Auto" loadMoreDataRequested="{{ onLoadMoreDataRequested }}">
+            <lv:RadListView.itemTemplate>
+                <StackLayout class="day-schedule">
+                    <StackLayout class="day-schedule-day_date" orientation="horizontal">
+                        <Label class="day-schedule-day" text="{{ day }}" />
+                        <Label class="day-schedule-date" text="{{ date }}" />
+                    </StackLayout>
+                    <Repeater items="{{ events }}">
+                        <Repeater.itemTemplate>
+                            <GridLayout class="row-card" columns="*, *, 3*, *" typeEvent="{{ type }}" id="{{ id }}" date="{{ date }}" caucus="{{ caucus }}" workshop="{{ workshop }}" touch="onTouch">
+                                <GridLayout class="row-card-time" col="0" rows="*,*">
+                                    <Label row="0" text="{{ sTime }}" />
+                                    <Label row="1" text="{{ eTime }}" />
+                                </GridLayout>
+                                <Image class="row-card-image" horizontalAlignment="center" col="1" src="{{ type, 'res://' + type + '_icon' }}" />
+                                <StackLayout class="row-card-event" col="2">>
+                                    <Label class="row-card-title" text="{{ title }}" textWrap="true" />
+                                    <Label class="row-card-location" textWrap="true" text="{{ location }}" />
+                                    <Label class="row-card-info" textWrap="true" text="Invite only" visibility="{{ (title == 'Awards Judging') ? 'visible' : 'collapsed' }}" />
+                                </StackLayout>
+                                <Image class="row-card-image" horizontalAlignment="right" col="3" src="res://right_arrow" />
                             </GridLayout>
-                            <Image class="row-card-image" horizontalAlignment="center" col="1" src="{{ type, 'res://' + type + '_icon' }}" />
-                            <StackLayout class="row-card-event" col="2">>
-                                <Label class="row-card-title" text="{{ title }}" textWrap="true" />
-                                <Label class="row-card-location" textWrap="true" text="{{ location }}" />
-                                <Label class="row-card-info" textWrap="true" text="Invite only" visibility="{{ (title == 'Awards Judging') ? 'visible' : 'collapsed' }}" />
-                            </StackLayout>
-                            <Image class="row-card-image" horizontalAlignment="right" col="3" src="res://right_arrow" />
-                        </GridLayout>
-                    </Repeater.itemTemplate>
-                </Repeater>
-            </StackLayout>
-        </lv:RadListView.itemTemplate>
-    </lv:RadListView>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </StackLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+    </GridLayout>
 </Page>

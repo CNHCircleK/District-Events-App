@@ -52,3 +52,17 @@
     font-size: 12;
     color: #000000;
 }
+
+.ws-eval-button {
+    margin: 15 0;
+    padding: 10 0;
+    background-color: #ffffff;
+    border-color: #ececec;
+    border-width: 2 0;
+    text-align: center;
+}
+
+.ws-eval-text {
+    font-size: 16;
+    color: #4d4dff;
+}

@@ -1,5 +1,5 @@
 <Page actionBarHidden="true">
-    <GridLayout rows="*, auto" columns="*">
+    <GridLayout rows="*, auto" columns="*" iosOverflowSafeArea="false">
 
         <Frame id="main-display" row="0" defaultPage="views/schedule-page/schedule-page"/>    
 

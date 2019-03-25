@@ -17,9 +17,6 @@
                         <Label class="event-sub-item" text="{{ agendaItem }}" />
                     </Repeater.itemTemplate>
                 </Repeater>
-                <StackLayout class="event-button">
-                    <Label class="event-button-text" text="Seating Map" />
-                </StackLayout>
             </StackLayout>
             <ActivityIndicator class="loading" busy="true" visibility="{{ loadingVisible }}" />
         </GridLayout>

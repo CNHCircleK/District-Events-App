@@ -20,6 +20,9 @@
                     </StackLayout>
                 </Repeater.itemTemplate>
             </Repeater>
+            <StackLayout class="ws-eval-button" tap="{{ onTapWsEval }}">
+                <Label class="ws-eval-text" text="Workshop Evaluation" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </Page>

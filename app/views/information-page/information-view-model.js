@@ -50,9 +50,6 @@ function InformationViewModel()
             {
                 infoTitle: "Elections",
                 items: new ObservableArray([
-                    { infoCategory: "Candidate Literature", hasName: false, onTap: function() {
-
-                    } },
                     { infoCategory: "Caucus Rules", hasName: false, onTap: function() {
                         viewPDF("Caucusing_Rules_2019.pdf");
                     } },

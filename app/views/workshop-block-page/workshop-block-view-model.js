@@ -1,6 +1,7 @@
 const observableModule = require("tns-core-modules/data/observable");
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const fileSystemModule = require("tns-core-modules/file-system");
+const utilityModule = require("tns-core-modules/utils/utils");
 
 
 function WorkshopBlockViewModel(context)
@@ -14,6 +15,9 @@ function WorkshopBlockViewModel(context)
         workshop: context.workshopNumber,
         initialize: function() {
             setWorkshops(this);
+        },
+        onTapWsEval: function() {
+            goToWsEval();
         }
     });
 
@@ -85,6 +89,11 @@ function setWorkshops(viewModel)
             viewModel.data.push(wsObj);
         });
     });
+}
+
+function goToWsEval() 
+{
+    utilityModule.openUrl("https://docs.google.com/forms/d/e/1FAIpQLScq2Qw2swz4sQ081n7zcjoOhGryYumrrt96Sv3lNm4Ifr6FnQ/viewform?fbclid=IwAR1H24Q2DSqFRXGXvSU448M69_58VPfReIstOlb2RfRGB-kRm91RsL9KCHs");
 }
 
 module.exports = WorkshopBlockViewModel;
